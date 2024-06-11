@@ -14,5 +14,12 @@ for index, row in df.iterrows():
              ln=1, border=0)
     pdf.line(x1=10, y1=21, x2=200, y2=21) # x1 & y1 are starting coordinates of line, 2s: ending
 
+    for i in range(row["Pages"] - 1):
+        pdf.add_page()
+        pdf.set_font(family="Times", size=10)
+        pdf.set_text_color(100, 100, 100)
+        pdf.cell(w=0, h=10, txt=row["Topic"], align="R",
+                 ln=1, border=0)
+
 
 pdf.output("output.pdf")
